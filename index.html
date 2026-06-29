@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reflexões: O que é a Adultização?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Espaço Curioso</h1>
+        <p>Ideias e debates sobre o mundo atual</p>
+    </header>
+
+    <main class="container">
+        <article class="post">
+            <h2>A pressa para crescer: Entendendo a Adultização</h2>
+            <p class="meta">Postado hoje • Tema: Sociedade</p>
+            
+            <p>Você já reparou como, às vezes, o mundo cobra que crianças e adolescentes se comportem, se vistam ou assumam responsabilidades de adultos antes da hora? Isso é o que chamamos de <strong>adultização</strong>.</p>
+            
+            <div class="container-imagem">
+                <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800&auto=format&fit=crop&q=60" alt="Criança olhando para o horizonte" class="imagem-post">
+                <p class="legenda-imagem">Preservar o tempo de cada fase é fundamental para o desenvolvimento saudável.</p>
+            </div>
+
+            <p>Esse fenômeno acontece de várias formas: na mídia, nas redes sociais e até na rotina diária. Perder as fases naturais do desenvolvimento pode impactar a criatividade e a saúde emocional. Afinal, cada fase da vida tem o seu valor único.</p>
+
+            <div class="secao-perguntas">
+                <h3>Teste de Reflexão: Você já notou isso?</h3>
+                <p>Marque as situações que você já percebeu no dia a dia:</p>
+                
+                <label class="opcao-checar">
+                    <input type="checkbox" onchange="atualizarProgresso()"> Roupas e estilos infantis sumindo das lojas para dar lugar a miniaturas de roupas de adultos.
+                </label>
+                <label class="opcao-checar">
+                    <input type="checkbox" onchange="atualizarProgresso()"> Redes sociais cobrando posturas e aparências muito maduras de quem ainda é jovem.
+                </label>
+                <label class="opcao-checar">
+                    <input type="checkbox" onchange="atualizarProgresso()"> Menos tempo livre para brincar ou apenas relaxar devido ao excesso de obrigações.
+                </label>
+
+                <p id="feedback-perguntas" class="feedback-oculto">Obrigado por refletir sobre isso! Perceber esses sinais é o primeiro passo.</p>
+            </div>
+
+            <div class="interacao">
+                <button class="btn-curtir" onclick="curtir()">❤️ Curtir (<span id="contador-curtidas">0</span>)</button>
+                <button class="btn-compartilhar" onclick="compartilhar()">🔗 Compartilhar</button>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        // Função do botão Curtir
+        let curtidas = 0;
+        function curtir() {
+            curtidas++;
+            document.getElementById('contador-curtidas').innerText = curtidas;
+        }
+
+        // Função do botão Compartilhar
+        function compartilhar() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Link do blog copiado para a área de transferência!");
+        }
+
+        // Função para mostrar feedback quando o usuário interage com as perguntas
+        function atualizarProgresso() {
+            const checkboxes = document.querySelectorAll('.opcao-checar input[type="checkbox"]');
+            let algumaMarcada = false;
+            
+            checkboxes.forEach(box => {
+                if (box.checked) algumaMarcada = true;
+            });
+
+            const feedback = document.getElementById('feedback-perguntas');
+            if (algumaMarcada) {
+                feedback.classList.remove('feedback-oculto');
+                feedback.classList.add('feedback-visivel');
+            }
+        }
+    </script>
+</body>
+</html>
